@@ -22,7 +22,6 @@ public class AppMainStarter {
 		ThreadPoolTaskExecutor execChecarVendas = (ThreadPoolTaskExecutor) threadPoolcontext.getBean("execChecarVendas");
 		ThreadPoolTaskExecutor execProcessarVendas = (ThreadPoolTaskExecutor) threadPoolcontext.getBean("execProcessarVendas");
 				
-	  }
-	
+	  }	
 
 }

@@ -1,6 +1,7 @@
 package br.com.dsrh.demo.batch.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class ItemVenda implements Serializable {
 
@@ -18,6 +19,8 @@ public class ItemVenda implements Serializable {
 	private Double precoUnitario;
 
 	private Double desconto;
+	
+	private Date dataVenda;
 
 	public Long getIdVenda() {
 		return idVenda;
@@ -57,6 +60,14 @@ public class ItemVenda implements Serializable {
 
 	public void setDesconto(Double desconto) {
 		this.desconto = desconto;
+	}
+	
+	public Date getDataVenda() {
+		return dataVenda;
+	}
+
+	public void setDataVenda(Date dataVenda) {
+		this.dataVenda = dataVenda;
 	}
 
 	@Override

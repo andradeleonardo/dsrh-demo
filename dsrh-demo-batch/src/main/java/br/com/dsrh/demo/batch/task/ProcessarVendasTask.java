@@ -28,7 +28,7 @@ public class ProcessarVendasTask implements Runnable {
 	
 	public void run() {
 		try {
-			vendaService.tratarVenda(processamentos);			
+			vendaService.processarVendas(processamentos);			
 		} 
 		catch (Exception e) {
 			log.error(e);	
