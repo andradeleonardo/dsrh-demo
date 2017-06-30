@@ -55,9 +55,9 @@ public class VendaDAOImpl implements VendaDAO {
 		}
 	}
 	
-	public void updateStatusProcessamento(Long id, String status) throws DAOException {
+	public void updateStatusProcessamentoAndNomeArquivo(Long id, String status, String nomeArquivo) throws DAOException {
 		try {
-			jdbcTemplate.update("UPDATE tb_venda SET status = ? WHERE id_venda = ? ", status, id);
+			jdbcTemplate.update("UPDATE tb_processamento SET status = ?, nome_arquivo = ? WHERE id_processamento = ? ", status, nomeArquivo, id);
 		} 
 		catch (Exception e) {
 			log.error(e);

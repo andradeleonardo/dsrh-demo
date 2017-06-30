@@ -11,7 +11,7 @@
 	<description>Projeto para processamento em batch.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>4.1.1.RELEASE</springframework.version>
+		<springframework.version>4.3.1.RELEASE</springframework.version>
 	</properties>
 
 	<dependencies>
@@ -60,5 +60,73 @@
 		</dependency>
 
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>br.com.dsrh.demo.batch.AppMainStarter</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<target name="building">
+								<echo>
+									Preparar para renomear o pacote
+								</echo>
+								<exec executable="cmd" dir="${project.basedir}/target"
+									osfamily="windows" failonerror="true">
+									<arg line="/c del ${project.build.finalName}.jar" />
+								</exec>
+
+								<exec executable="cmd" dir="${project.basedir}/target"
+									osfamily="windows" resultproperty="cmdresult">
+									<arg
+										line="/c rename  ${project.artifactId}-${project.version}-jar-with-dependencies.jar ${project.build.finalName}-${ambiente.sigla}.jar" />
+								</exec>
+
+								<condition property="cmdsuccess">
+									<equals arg1="${cmdresult}" arg2="0" />
+								</condition>
+								<fail unless="cmdsuccess" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

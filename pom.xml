@@ -21,5 +21,7 @@
 	</dependencies>
 	<modules>
 		<module>dsrh-demo-batch</module>
+		<module>dsrh-demo-web-api</module>
+		<module>dsrh-demo-web</module>
 	</modules>
 </project>

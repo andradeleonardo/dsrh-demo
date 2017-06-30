@@ -79,7 +79,6 @@ public class VendaServiceImpl implements VendaService {
 		
 		SimpleDateFormat df = new SimpleDateFormat("ddmmyyyy");
 		DecimalFormat nf = new DecimalFormat(".#####");
-
 		
 		// Verifica se diretório de gravação existe.
 		File diretorio = new File(AppConstants.PATH_STORAGE);
@@ -135,7 +134,7 @@ public class VendaServiceImpl implements VendaService {
 				}
 				
 				// Atualizando status do processamento para OK
-				vendaDAO.updateStatusProcessamento(processamento.getId(), AppConstants.STATUS_OK);
+				vendaDAO.updateStatusProcessamentoAndNomeArquivo(processamento.getId(), AppConstants.STATUS_OK, fileName);
 			}
 		
 		} 

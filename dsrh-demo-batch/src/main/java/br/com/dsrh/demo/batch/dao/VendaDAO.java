@@ -14,8 +14,8 @@ public interface VendaDAO {
 	public void updateStatusVenda(Long id, String status) throws DAOException;
 	
 	public List<Processamento> findProcessamentosPendentes() throws DAOException;
-	
-	public void updateStatusProcessamento(Long id, String status) throws DAOException;
+		
+	public void updateStatusProcessamentoAndNomeArquivo(Long id, String status, String nomeArquivo) throws DAOException;
 	
 	public void insertProcessamento(Processamento processamento) throws DAOException;
 	
